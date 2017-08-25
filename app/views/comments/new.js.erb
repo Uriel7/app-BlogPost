@@ -1,0 +1,19 @@
+$('#form-comment').html("<%= j render 'form' %>");
+
+$('#form-comment').on('ajax:before', function(e, xhr, status, error){
+  f = $(e.currentTarget);
+  content = f.find('#comment_content').val();
+
+  if (content === ''){
+    $('#content_error').append('Comentario es obligatorio.');
+    return false;
+  }
+});
+
+$('#form-comment form').on('ajax:success', function(e, xhr, status, error){
+  $('#form-comment form').trigger('reset');
+});
+
+$('#form-comment form').on('ajax:error', function(e, xhr, status, error){
+  alert('Error al guardar el comentario.');
+});

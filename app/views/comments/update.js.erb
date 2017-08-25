@@ -1,0 +1,4 @@
+$("#edit_comment_<%= @comment.id %>").hide();
+$("<%= j render @comment %>")
+.replaceAll($("#comment_<%= @comment.id %>"))
+.effect('highlight', null, 2000);

@@ -1,0 +1,10 @@
+%li[post]
+  = link_to post.title, post_path(post.id)
+  %a.dropdown-toggle.pull-right{'data-toggle': 'dropdown', type: 'button'}
+    %i.fa.fa-pie-chart
+    %span.caret{'title': 'opciones'}
+  %ul.dropdown-menu.pull-right
+    %li
+      = link_to 'Editar', edit_post_path(post.id), remote: true
+    %li
+      = link_to 'Eliminar', post_path(post.id), remote: true, method: :delete

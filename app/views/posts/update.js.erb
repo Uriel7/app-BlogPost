@@ -1,0 +1,3 @@
+$("<%= j render @post %>")
+.replaceAll($("#post_<%= @post.id %>"))
+.effect('highlight', null, 2000);

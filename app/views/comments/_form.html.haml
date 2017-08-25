@@ -1,0 +1,6 @@
+= form_for [@comment.post, @comment], remote: true do |f|
+  .form-group
+    = f.text_area :content
+    %span.help-block.with-errors#content_error
+  .form-group
+    = f.submit 'Comentar'

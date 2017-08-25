@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-lg-12
+      .margin-tb
+        %h1= @post.title
+        %h4= @post.content
+        = link_to 'Comentar', new_post_comment_path(@post.id), remote: true, class: 'btn btn-success pull-right'
+      %h4 comentarios:
+      .row
+        %ul#comments.col-sm-6
+          - @post.comments.each do |comment|
+            = render comment
+      #form-comment

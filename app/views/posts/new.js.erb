@@ -1,0 +1,38 @@
+var dialog_form = $("<%= j render 'form' %>").dialog({
+  autoOpen: false,
+  width: 520,
+  modal: true,
+  close: function(){ dialog_form.dialog('destroy') }
+});
+
+$('#dialog_form .btn-cancel').click(function(){
+  dialog_form.dialog('destroy');
+  return false
+});
+
+$('#dialog_form form').on('ajax:before', function(e, xhr, status, error){
+  f = $(e.currentTarget);
+  title = f.find('#post_title').val();
+  content = f.find('#post_content').val();
+
+  if (title === ''){
+    $('#title_error').append('Titúlo es obligatorio.');
+    return false;
+  }
+
+  if (content === ''){
+    $('#content_error').append('Conenido es obligatorio.');
+    return false;
+  }
+
+});
+
+$('#dialog_form form').on('ajax:success', function(e, xhr, status, error){
+  dialog_form.dialog('close');
+});
+
+$('#dialog_form form').on('ajax:error', function(e, xhr, status, error){
+  alert('Error to save');
+});
+
+dialog_form.dialog('open');

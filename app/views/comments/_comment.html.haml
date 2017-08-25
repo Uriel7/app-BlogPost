@@ -1,0 +1,10 @@
+%li[comment]
+  = comment.content
+  %a.dropdown-toggle.pull-right{'data-toggle': 'dropdown', type: 'button'}
+    %i.fa.fa-pie-chart
+    %span.caret{'title': 'opciones'}
+  %ul.dropdown-menu.pull-right
+    %li
+      = link_to 'Editar', edit_post_comment_path(comment.post_id, comment.id), remote: true
+    %li
+      = link_to 'Eliminar', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true
