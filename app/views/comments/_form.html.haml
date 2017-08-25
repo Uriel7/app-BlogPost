@@ -1,6 +1,6 @@
 = form_for [@comment.post, @comment], remote: true do |f|
-  .form-group
-    = f.text_area :content
+  .form-group.col-sm-8
+    = f.text_area :content, class: 'form-control', placeholder: 'Escribe tu comentario...'
     %span.help-block.with-errors#content_error
-  .form-group
+  .form-group.col-sm-6
     = f.submit 'Comentar'
